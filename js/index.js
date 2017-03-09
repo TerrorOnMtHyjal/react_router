@@ -62,8 +62,6 @@ function grabCorrectEmail(inboxType, id){
     return desiredEmail;
 }
 
-//console.log(grabCorrectEmail("inbox", 1));
-
 const routes = (
     <Router history={hashHistory}>
         <Route path="/" component={EmailApp}>
