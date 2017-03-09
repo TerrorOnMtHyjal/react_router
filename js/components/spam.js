@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-export default function Spam(props){
+export default function Inbox(props){
 
   return (
     <div>
@@ -10,7 +10,7 @@ export default function Spam(props){
       {props.route.spamEmails.map(email => {
         return (
           <div className="singleEmail">
-            <p>{email.title}</p>
+            <Link to={'/spam/'+ email.id}>{email.title}</Link><br/>
             <p>{email.from}</p>
           </div>
         );

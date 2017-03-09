@@ -52,14 +52,27 @@ const emails = {
         ]
       };
 
+function grabCorrectEmail(inboxType, id){
+    let desiredEmail = {}
+    emails[inboxType].forEach(email => {
+        if(email.id === id){
+            desiredEmail = email;
+        }
+    });
+    return desiredEmail;
+}
+
+//console.log(grabCorrectEmail("inbox", 1));
+
 const routes = (
     <Router history={hashHistory}>
         <Route path="/" component={EmailApp}>
             <IndexRoute component={Inbox} inboxEmails={emails.inbox}/>
             <Route path="inbox" component={Inbox} inboxEmails={emails.inbox}/>
-            <Route path="inbox/:id" component={Email} />
+            <Route path="inbox/:id" component={Email} emailType="inbox" grabEmail={grabCorrectEmail}/>
 
             <Route path="spam" component={Spam} spamEmails={emails.spam}/>
+            <Route path="spam/:id" component={Email} emailType="spam" grabEmail={grabCorrectEmail}/>
         </Route>
     </Router>
 );
