@@ -10,7 +10,7 @@ export default function Inbox(props){
       {props.route.inboxEmails.map(email => {
         return (
           <div className="singleEmail">
-            <p>{email.title}</p>
+            <Link to={'/inbox/'+ email.id}>{email.title}</Link><br/>
             <p>{email.from}</p>
           </div>
         );

@@ -6,6 +6,8 @@ import EmailApp from './components/email-app';
 import Sidebar from './components/sidebar';
 import Inbox from './components/inbox';
 import Spam from './components/spam';
+import Email from './components/email';
+
 import ContentDisplay from './components/content-display';
 
 const emails = {
@@ -53,8 +55,10 @@ const emails = {
 const routes = (
     <Router history={hashHistory}>
         <Route path="/" component={EmailApp}>
-            <IndexRoute component={Inbox}/>
+            <IndexRoute component={Inbox} inboxEmails={emails.inbox}/>
             <Route path="inbox" component={Inbox} inboxEmails={emails.inbox}/>
+            <Route path="inbox/:id" component={Email} />
+
             <Route path="spam" component={Spam} spamEmails={emails.spam}/>
         </Route>
     </Router>
@@ -63,4 +67,3 @@ const routes = (
 document.addEventListener('DOMContentLoaded', () => {
   ReactDom.render(routes, document.getElementById('app'));
 });
-
